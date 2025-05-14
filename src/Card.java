@@ -1,8 +1,10 @@
 public class Card {
     private final String rank;
+    private final String suit;
 
-    public Card(String rank) {
+    public Card(String rank, String suit) {
         this.rank = rank;
+        this.suit = suit;
     }
 
     public String getRank() {
@@ -19,8 +21,18 @@ public class Card {
         }
     }
 
+    public String getSymbol() {
+        return switch (suit) {
+            case "Spades"   -> "♠";
+            case "Hearts"   -> "♥";
+            case "Diamonds" -> "♦";
+            case "Clubs"    -> "♣";
+            default         -> "?";
+        };
+    }
+
     @Override
     public String toString() {
-        return rank;
+        return rank + getSymbol();
     }
 }
