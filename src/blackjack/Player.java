@@ -1,4 +1,6 @@
 package blackjack;
+
+/** Modelliert den Spieler ******************************************************************************************************************************************/
 public class Player {
     private Hand hand;
     private int balance;
@@ -22,7 +24,7 @@ public class Player {
         balance += amount;
     }
 
-    public void placeBet(int bet) {
+    public void placeBet(int bet) { // Plaziert einen Einsatz
         if (bet > balance) {
             throw new IllegalArgumentException("Nicht genügend Guthaben für diesen Einsatz.");
         }
@@ -34,7 +36,7 @@ public class Player {
         return currentBet;
     }
 
-    public void winBet(boolean blackjack) {
+    public void winBet(boolean blackjack) { // Wie viel der Spieler gewinnt
         if (blackjack) {
             balance += currentBet + currentBet * 3 / 2;
         } else {

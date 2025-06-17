@@ -26,9 +26,6 @@ import javax.swing.Timer;
 import javax.imageio.ImageIO; 
 import java.net.URL;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 public class BlackjackGUI extends JFrame {
     private Deck deck;
     private Player player;

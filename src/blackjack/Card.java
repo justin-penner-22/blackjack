@@ -1,6 +1,8 @@
 package blackjack;
+
+/** Initialisiert eine Spielkarte *************************************************************************************************************************************/
 public class Card {
-    public enum Suit { HEARTS, DIAMONDS, CLUBS, SPADES }
+    public enum Suit { HEARTS, DIAMONDS, CLUBS, SPADES } 
     private Suit suit;
     private String rank;
     private int value;
