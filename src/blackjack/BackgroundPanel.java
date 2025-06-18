@@ -19,10 +19,10 @@ public class BackgroundPanel extends JPanel {
             if (loadedBackgroundImage == null) {
                 System.err.println("Fehler: Hintergrundbild '/images/background.jpg' konnte nicht gefunden werden.");
             }
-        } catch (IOException e) {
+        } catch (IOException e) { // Fals der Pfad oder Datei nicht gefunden
             System.err.println("Fehler beim Laden des Hintergrundbildes aus Datei: " + e.getMessage());
             e.printStackTrace(); 
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) { // Falscher Pfad oder ungültige Ressource
             System.err.println("Fehler: Der Pfad zum Hintergrundbild '/images/background.jpg' ist ungültig oder das Bild existiert nicht. " + e.getMessage());
             e.printStackTrace();
         }
@@ -34,15 +34,12 @@ public class BackgroundPanel extends JPanel {
 
         if (loadedBackgroundImage != null) {
             Graphics2D g2d = (Graphics2D) g;
-
+            
+            // sorgt für eine bessere Bildqualität
             g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-
             g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
             g2d.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
-
             g2d.drawImage(loadedBackgroundImage, 0, 0, getWidth(), getHeight(), this);
         }
     }
