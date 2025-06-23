@@ -73,18 +73,16 @@ public class BlackjackGUI extends JFrame {
             JLabel titleLabel = new JLabel(titleIcon);
             titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
             topPanel.add(titleLabel, BorderLayout.WEST);
-        } else {
+        } else { // Fallback
             System.err.println("Ressourcenbild wurde nicht gefunden: /images/blackjack-title.png");
-            // Fallback
             JLabel fallbackTitle = new JLabel("Blackjack Spiel");
             fallbackTitle.setFont(new Font("Verdana", Font.BOLD, 24));
             fallbackTitle.setForeground(Color.WHITE);
             fallbackTitle.setHorizontalAlignment(SwingConstants.CENTER);
             topPanel.add(fallbackTitle, BorderLayout.WEST);
         }
-    } catch (Exception e) {
+    } catch (Exception e) { // Fallback
         System.err.println("Fehler beim Laden des Ressourcenbildes: " + e.getMessage());
-        // Fallback
         JLabel fallbackTitle = new JLabel("Blackjack Spiel");
         fallbackTitle.setFont(new Font("Verdana", Font.BOLD, 24));
         fallbackTitle.setForeground(Color.WHITE);
@@ -114,7 +112,7 @@ public class BlackjackGUI extends JFrame {
     private JPanel createInfoPanel() { 
         JPanel panel = new JPanel(new GridLayout(2, 1, 0, 10)); // GridLayout mit vertikalem Abstand
         panel.setOpaque(false);
-        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 0)); //Außenabstand oben/unten
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); //Außenabstand 
 
         balanceLabel = new JLabel("Guthaben: " + player.getBalance() + "€");
         balanceLabel.setForeground(Color.WHITE);
@@ -223,7 +221,7 @@ public class BlackjackGUI extends JFrame {
         return panel;
     }
 
-    /** Beenden Window ***********************************************************************************************************************************************************/
+    /** Updating Infos ***********************************************************************************************************************************************************/
     private void placeBet() {
         try {
             int bet = Integer.parseInt(betField.getText());
@@ -345,7 +343,7 @@ public class BlackjackGUI extends JFrame {
         newGameButton.setEnabled(false);
     }
 
-    // Wählt je nach Gewinn oder Verlust die passende Animation
+    /** Exit Fenster *****************************************************************************************************************************************************/
     private void showExitDialog() {
         int gain = player.getBalance() - initialBalance;
         if (gain >= 0) {
@@ -368,7 +366,7 @@ public class BlackjackGUI extends JFrame {
         dialog.setVisible(true);
     }
 
-    // Erzeugt Dialog und animiert Zahl bis zum Zielwert
+    // Erzeugt ein Dialog und animiert Zahl bis zum Zielwert
     private JDialog createDialog(String title, String startText, int target, boolean isWin) {
         JDialog dialog = new JDialog(this, title, true);
         dialog.setSize(400, 200);

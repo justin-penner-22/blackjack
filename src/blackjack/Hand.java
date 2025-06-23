@@ -1,6 +1,7 @@
 package blackjack;
 import java.util.*;
 
+/** Repräsentiert die Spielerkarten **************************************************************************************************************************************************************/
 public class Hand {
     private List<Card> cards;
 
@@ -16,7 +17,7 @@ public class Hand {
         return cards;
     }
 
-    public int getValue() {
+    public int getValue() { // Berechnet den Blackjack-Wert der Hand
         int value = 0;
         int aceCount = 0;
         for (Card c : cards) {
@@ -25,8 +26,8 @@ public class Hand {
                 aceCount++;
             }
         }
-        // Adjust for aces
-        while (value > 21 && aceCount > 0) {
+        
+        while (value > 21 && aceCount > 0) { // Adjust for aces
             value -= 10;
             aceCount--;
         }

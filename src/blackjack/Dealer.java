@@ -1,4 +1,6 @@
 package blackjack;
+
+/** Modelliert den Dealer ******************************************************************************************************************************************/
 public class Dealer {
     private Hand hand;
 
@@ -14,11 +16,9 @@ public class Dealer {
         hand.clear();
     }
 
-    public void playTurn(Deck deck) {
+    public void playTurn(Deck deck) { // Fügt eine Karte hinzu, wenn die Hand des Dealers weniger als 17 Punkte hat
         while (hand.getValue() < 17) {
             hand.addCard(deck.drawCard());
         }
     }
 }
-
-    
